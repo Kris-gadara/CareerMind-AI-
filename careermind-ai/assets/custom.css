@@ -1,0 +1,454 @@
+/*
+ * CareerMind AI - Custom Styles
+ * ==============================
+ * Dark professional theme with indigo accents
+ */
+
+/* ============================================
+   CSS Variables (Design Tokens)
+   ============================================ */
+:root {
+    /* Background colors */
+    --cm-bg-primary: #0f0f14;
+    --cm-bg-secondary: #1a1a24;
+    --cm-bg-tertiary: #252532;
+    --cm-bg-hover: #2d2d3d;
+
+    /* Accent colors */
+    --cm-accent: #6c63ff;
+    --cm-accent-hover: #5a52e0;
+    --cm-accent-light: #a78bfa;
+
+    /* Text colors */
+    --cm-text-primary: #e8e8f0;
+    --cm-text-secondary: #a0a0b0;
+    --cm-text-muted: #707080;
+
+    /* Status colors */
+    --cm-success: #4ade80;
+    --cm-warning: #fbbf24;
+    --cm-error: #f87171;
+    --cm-info: #60a5fa;
+
+    /* Border and shadows */
+    --cm-border: #3a3a4a;
+    --cm-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+
+    /* Spacing */
+    --cm-spacing-xs: 4px;
+    --cm-spacing-sm: 8px;
+    --cm-spacing-md: 16px;
+    --cm-spacing-lg: 24px;
+    --cm-spacing-xl: 32px;
+
+    /* Border radius */
+    --cm-radius-sm: 6px;
+    --cm-radius-md: 10px;
+    --cm-radius-lg: 16px;
+    --cm-radius-full: 9999px;
+
+    /* Transitions */
+    --cm-transition: all 0.2s ease-in-out;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+.gradio-container {
+    background: var(--cm-bg-primary) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    max-width: 1400px !important;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--cm-text-primary) !important;
+    font-weight: 600 !important;
+}
+
+p, span, label {
+    color: var(--cm-text-secondary) !important;
+}
+
+/* ============================================
+   Header Component
+   ============================================ */
+.main-header {
+    text-align: center;
+    padding: var(--cm-spacing-xl);
+    background: linear-gradient(135deg, var(--cm-bg-secondary), var(--cm-bg-tertiary));
+    border-radius: var(--cm-radius-lg);
+    margin-bottom: var(--cm-spacing-lg);
+    border: 1px solid var(--cm-border);
+    box-shadow: var(--cm-shadow);
+}
+
+.main-header h1 {
+    font-size: 2.75em;
+    margin-bottom: var(--cm-spacing-sm);
+    background: linear-gradient(135deg, var(--cm-accent), var(--cm-accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.main-header p {
+    color: var(--cm-text-secondary);
+    font-size: 1.1em;
+}
+
+/* ============================================
+   Tab Navigation
+   ============================================ */
+.tab-nav {
+    background: var(--cm-bg-secondary) !important;
+    border-radius: var(--cm-radius-md) !important;
+    padding: var(--cm-spacing-sm) !important;
+    margin-bottom: var(--cm-spacing-md) !important;
+}
+
+.tab-nav button {
+    color: var(--cm-text-secondary) !important;
+    font-weight: 500 !important;
+    padding: var(--cm-spacing-sm) var(--cm-spacing-md) !important;
+    border-radius: var(--cm-radius-sm) !important;
+    transition: var(--cm-transition) !important;
+}
+
+.tab-nav button:hover {
+    background: var(--cm-bg-hover) !important;
+    color: var(--cm-text-primary) !important;
+}
+
+.tab-nav button.selected {
+    background: var(--cm-accent) !important;
+    color: white !important;
+}
+
+/* ============================================
+   Cards and Panels
+   ============================================ */
+.info-panel {
+    background: var(--cm-bg-secondary);
+    border: 1px solid var(--cm-border);
+    border-radius: var(--cm-radius-md);
+    padding: var(--cm-spacing-lg);
+    margin: var(--cm-spacing-md) 0;
+    transition: var(--cm-transition);
+}
+
+.info-panel:hover {
+    border-color: var(--cm-accent);
+}
+
+/* ============================================
+   Skill Badges
+   ============================================ */
+.skill-badge {
+    display: inline-block;
+    background: var(--cm-accent);
+    color: white;
+    padding: var(--cm-spacing-xs) var(--cm-spacing-md);
+    border-radius: var(--cm-radius-full);
+    margin: var(--cm-spacing-xs);
+    font-size: 0.875em;
+    font-weight: 500;
+    transition: var(--cm-transition);
+}
+
+.skill-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(108, 99, 255, 0.3);
+}
+
+.skill-badge.missing {
+    background: var(--cm-error);
+}
+
+.skill-badge.nice {
+    background: var(--cm-warning);
+    color: var(--cm-bg-primary);
+}
+
+.skill-badge.matched {
+    background: var(--cm-success);
+    color: var(--cm-bg-primary);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.primary-btn,
+button[variant="primary"] {
+    background: var(--cm-accent) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: var(--cm-spacing-sm) var(--cm-spacing-lg) !important;
+    border-radius: var(--cm-radius-sm) !important;
+    transition: var(--cm-transition) !important;
+}
+
+.primary-btn:hover,
+button[variant="primary"]:hover {
+    background: var(--cm-accent-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3) !important;
+}
+
+.secondary-btn,
+button[variant="secondary"] {
+    background: var(--cm-bg-tertiary) !important;
+    border: 1px solid var(--cm-border) !important;
+    color: var(--cm-text-primary) !important;
+}
+
+.secondary-btn:hover,
+button[variant="secondary"]:hover {
+    background: var(--cm-bg-hover) !important;
+    border-color: var(--cm-accent) !important;
+}
+
+/* ============================================
+   Input Fields
+   ============================================ */
+input[type="text"],
+textarea,
+.input-text {
+    background: var(--cm-bg-tertiary) !important;
+    border: 1px solid var(--cm-border) !important;
+    color: var(--cm-text-primary) !important;
+    border-radius: var(--cm-radius-sm) !important;
+    padding: var(--cm-spacing-sm) var(--cm-spacing-md) !important;
+    transition: var(--cm-transition) !important;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: var(--cm-accent) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2) !important;
+}
+
+/* ============================================
+   Dropdowns
+   ============================================ */
+.dropdown,
+select {
+    background: var(--cm-bg-tertiary) !important;
+    border: 1px solid var(--cm-border) !important;
+    color: var(--cm-text-primary) !important;
+    border-radius: var(--cm-radius-sm) !important;
+}
+
+/* ============================================
+   Chat Interface
+   ============================================ */
+.chatbot {
+    background: var(--cm-bg-secondary) !important;
+    border: 1px solid var(--cm-border) !important;
+    border-radius: var(--cm-radius-lg) !important;
+}
+
+.chatbot .message {
+    padding: var(--cm-spacing-md) !important;
+    border-radius: var(--cm-radius-md) !important;
+    margin: var(--cm-spacing-sm) !important;
+}
+
+.chatbot .user {
+    background: var(--cm-accent) !important;
+    color: white !important;
+}
+
+.chatbot .assistant {
+    background: var(--cm-bg-tertiary) !important;
+    color: var(--cm-text-primary) !important;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+table {
+    background: var(--cm-bg-secondary) !important;
+    border: 1px solid var(--cm-border) !important;
+    border-radius: var(--cm-radius-md) !important;
+    overflow: hidden;
+}
+
+th {
+    background: var(--cm-bg-tertiary) !important;
+    color: var(--cm-text-primary) !important;
+    font-weight: 600 !important;
+    padding: var(--cm-spacing-md) !important;
+    text-align: left !important;
+}
+
+td {
+    color: var(--cm-text-secondary) !important;
+    padding: var(--cm-spacing-md) !important;
+    border-bottom: 1px solid var(--cm-border) !important;
+}
+
+tr:hover td {
+    background: var(--cm-bg-hover) !important;
+}
+
+/* ============================================
+   Progress/Slider
+   ============================================ */
+.slider {
+    accent-color: var(--cm-accent) !important;
+}
+
+.progress-bar {
+    background: var(--cm-bg-tertiary) !important;
+    border-radius: var(--cm-radius-full) !important;
+}
+
+.progress-bar .fill {
+    background: linear-gradient(90deg, var(--cm-accent), var(--cm-accent-light)) !important;
+    border-radius: var(--cm-radius-full) !important;
+}
+
+/* ============================================
+   Markdown Content
+   ============================================ */
+.markdown-text {
+    color: var(--cm-text-secondary) !important;
+    line-height: 1.7;
+}
+
+.markdown-text h2 {
+    color: var(--cm-accent) !important;
+    border-bottom: 1px solid var(--cm-border);
+    padding-bottom: var(--cm-spacing-sm);
+    margin-top: var(--cm-spacing-lg);
+}
+
+.markdown-text h3 {
+    color: var(--cm-text-primary) !important;
+    margin-top: var(--cm-spacing-md);
+}
+
+.markdown-text ul, .markdown-text ol {
+    padding-left: var(--cm-spacing-lg);
+}
+
+.markdown-text li {
+    margin: var(--cm-spacing-xs) 0;
+}
+
+.markdown-text code {
+    background: var(--cm-bg-tertiary);
+    padding: 2px 6px;
+    border-radius: var(--cm-radius-sm);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.markdown-text pre {
+    background: var(--cm-bg-tertiary);
+    padding: var(--cm-spacing-md);
+    border-radius: var(--cm-radius-md);
+    overflow-x: auto;
+}
+
+/* ============================================
+   Status Indicators
+   ============================================ */
+.status-ready {
+    color: var(--cm-success) !important;
+}
+
+.status-loading {
+    color: var(--cm-warning) !important;
+}
+
+.status-error {
+    color: var(--cm-error) !important;
+}
+
+.status-info {
+    color: var(--cm-info) !important;
+}
+
+/* ============================================
+   Match Score Display
+   ============================================ */
+.match-score {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--cm-accent);
+    text-align: center;
+}
+
+.match-score-label {
+    font-size: 0.9em;
+    color: var(--cm-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    text-align: center;
+    padding: var(--cm-spacing-xl);
+    color: var(--cm-text-muted);
+    font-size: 0.875em;
+    border-top: 1px solid var(--cm-border);
+    margin-top: var(--cm-spacing-xl);
+}
+
+.footer a {
+    color: var(--cm-accent);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 2em;
+    }
+
+    .skill-badge {
+        font-size: 0.8em;
+        padding: 3px 10px;
+    }
+}

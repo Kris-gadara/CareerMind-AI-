@@ -1,0 +1,218 @@
+{
+  "Machine Learning Engineer": {
+    "required_skills": ["python", "tensorflow", "pytorch", "scikit-learn", "numpy", "pandas", "docker", "aws", "mlflow", "git"],
+    "nice_to_have": ["spark", "kafka", "kubernetes", "fastapi", "airflow", "wandb"],
+    "avg_salary_usd": 125000,
+    "description": "Builds and deploys ML models at scale",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.6}
+    }
+  },
+  "Data Scientist": {
+    "required_skills": ["python", "statistics", "pandas", "numpy", "matplotlib", "scikit-learn", "sql", "jupyter", "git"],
+    "nice_to_have": ["r", "tableau", "spark", "deep learning", "tensorflow", "pytorch"],
+    "avg_salary_usd": 110000,
+    "description": "Extracts insights from complex datasets using statistical and ML methods",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.5}
+    }
+  },
+  "Data Analyst": {
+    "required_skills": ["sql", "excel", "python", "tableau", "power bi", "statistics", "pandas"],
+    "nice_to_have": ["looker", "google analytics", "r", "dbt", "airflow"],
+    "avg_salary_usd": 75000,
+    "description": "Analyzes data and creates business reports and dashboards",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.8},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.25},
+      "staff": {"years": [10, 99], "salary_mult": 1.4}
+    }
+  },
+  "Data Engineer": {
+    "required_skills": ["python", "sql", "spark", "airflow", "aws", "docker", "postgresql", "git", "etl"],
+    "nice_to_have": ["kafka", "dbt", "snowflake", "databricks", "kubernetes", "terraform"],
+    "avg_salary_usd": 115000,
+    "description": "Builds and maintains data pipelines and infrastructure",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.55}
+    }
+  },
+  "Backend Developer": {
+    "required_skills": ["python", "django", "fastapi", "sql", "rest api", "docker", "git", "postgresql"],
+    "nice_to_have": ["redis", "celery", "kubernetes", "aws", "graphql", "mongodb"],
+    "avg_salary_usd": 105000,
+    "description": "Builds server-side systems and APIs",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.5}
+    }
+  },
+  "Frontend Developer": {
+    "required_skills": ["javascript", "react", "html", "css", "typescript", "git", "rest api"],
+    "nice_to_have": ["nextjs", "graphql", "webpack", "testing", "vue", "tailwind"],
+    "avg_salary_usd": 95000,
+    "description": "Builds user-facing web applications and interfaces",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.45}
+    }
+  },
+  "Full Stack Developer": {
+    "required_skills": ["javascript", "react", "python", "sql", "html", "css", "git", "docker", "rest api"],
+    "nice_to_have": ["typescript", "aws", "mongodb", "redis", "nextjs", "graphql"],
+    "avg_salary_usd": 110000,
+    "description": "Works across both frontend and backend systems",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.5}
+    }
+  },
+  "DevOps Engineer": {
+    "required_skills": ["docker", "kubernetes", "aws", "linux", "terraform", "ci/cd", "python", "bash", "git"],
+    "nice_to_have": ["ansible", "prometheus", "grafana", "jenkins", "azure", "gcp"],
+    "avg_salary_usd": 120000,
+    "description": "Manages infrastructure and deployment pipelines",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.55}
+    }
+  },
+  "NLP Engineer": {
+    "required_skills": ["python", "nlp", "spacy", "transformers", "huggingface", "pytorch", "bert", "git"],
+    "nice_to_have": ["langchain", "faiss", "rag", "llm fine-tuning", "tensorflow", "gpt"],
+    "avg_salary_usd": 130000,
+    "description": "Builds language understanding and generation systems",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.35},
+      "staff": {"years": [10, 99], "salary_mult": 1.6}
+    }
+  },
+  "AI Research Engineer": {
+    "required_skills": ["python", "pytorch", "deep learning", "mathematics", "linear algebra", "git", "paper reading"],
+    "nice_to_have": ["cuda", "triton", "jax", "distributed training", "tensorflow", "reinforcement learning"],
+    "avg_salary_usd": 145000,
+    "description": "Advances AI capabilities through research and novel architectures",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.35},
+      "staff": {"years": [10, 99], "salary_mult": 1.7}
+    }
+  },
+  "Cloud Engineer": {
+    "required_skills": ["aws", "azure", "gcp", "terraform", "docker", "linux", "networking", "git"],
+    "nice_to_have": ["kubernetes", "python", "security", "cost optimization", "ansible", "serverless"],
+    "avg_salary_usd": 115000,
+    "description": "Designs and manages cloud infrastructure and services",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.5}
+    }
+  },
+  "Software Engineer": {
+    "required_skills": ["python", "java", "git", "sql", "data structures", "algorithms", "rest api", "testing"],
+    "nice_to_have": ["docker", "kubernetes", "aws", "ci/cd", "microservices", "system design"],
+    "avg_salary_usd": 110000,
+    "description": "Designs and builds software systems and applications",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.55}
+    }
+  },
+  "Mobile Developer": {
+    "required_skills": ["swift", "kotlin", "react native", "flutter", "git", "rest api", "mobile ui"],
+    "nice_to_have": ["firebase", "graphql", "ci/cd", "testing", "app store optimization"],
+    "avg_salary_usd": 105000,
+    "description": "Builds native and cross-platform mobile applications",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.3},
+      "staff": {"years": [10, 99], "salary_mult": 1.45}
+    }
+  },
+  "Security Engineer": {
+    "required_skills": ["python", "linux", "networking", "security", "penetration testing", "cryptography", "git"],
+    "nice_to_have": ["aws security", "siem", "incident response", "compliance", "reverse engineering"],
+    "avg_salary_usd": 125000,
+    "description": "Protects systems and data from security threats",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.35},
+      "staff": {"years": [10, 99], "salary_mult": 1.6}
+    }
+  },
+  "Product Manager": {
+    "required_skills": ["product management", "agile", "scrum", "jira", "data analysis", "communication", "roadmapping"],
+    "nice_to_have": ["sql", "a/b testing", "user research", "figma", "analytics"],
+    "avg_salary_usd": 130000,
+    "description": "Defines product strategy and manages feature development",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.35},
+      "staff": {"years": [10, 99], "salary_mult": 1.6}
+    }
+  },
+  "QA Engineer": {
+    "required_skills": ["testing", "selenium", "python", "sql", "test automation", "git", "jira"],
+    "nice_to_have": ["cypress", "playwright", "api testing", "performance testing", "ci/cd"],
+    "avg_salary_usd": 85000,
+    "description": "Ensures software quality through testing and automation",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.8},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.25},
+      "staff": {"years": [10, 99], "salary_mult": 1.4}
+    }
+  },
+  "Solutions Architect": {
+    "required_skills": ["aws", "system design", "microservices", "docker", "kubernetes", "networking", "communication"],
+    "nice_to_have": ["azure", "gcp", "terraform", "security", "cost optimization"],
+    "avg_salary_usd": 150000,
+    "description": "Designs system architecture and technical solutions",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.7},
+      "mid": {"years": [3, 6], "salary_mult": 1.0},
+      "senior": {"years": [6, 12], "salary_mult": 1.3},
+      "staff": {"years": [12, 99], "salary_mult": 1.55}
+    }
+  },
+  "Computer Vision Engineer": {
+    "required_skills": ["python", "pytorch", "opencv", "deep learning", "cnn", "image processing", "git"],
+    "nice_to_have": ["tensorflow", "yolo", "segmentation", "cuda", "onnx", "edge deployment"],
+    "avg_salary_usd": 135000,
+    "description": "Builds systems that understand and process visual data",
+    "experience_levels": {
+      "junior": {"years": [0, 2], "salary_mult": 0.75},
+      "mid": {"years": [2, 5], "salary_mult": 1.0},
+      "senior": {"years": [5, 10], "salary_mult": 1.35},
+      "staff": {"years": [10, 99], "salary_mult": 1.6}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+# CareerMind AI - Dependencies
+# Python 3.10+ required
+
+# UI Framework
+gradio==4.44.0
+
+# AI/ML Core
+transformers==4.44.0
+torch==2.3.1
+accelerate==0.33.0
+
+# NLP Processing
+spacy==3.7.5
+
+# PDF Processing
+PyPDF2==3.0.1
+
+# Machine Learning
+scikit-learn==1.5.1
+
+# HTTP Client (for Ollama API)
+requests==2.32.3
+
+# Environment Management
+python-dotenv==1.0.1
+
+# Data Processing
+numpy==1.26.4
+pandas==2.2.2
+
+# Visualization
+plotly==5.23.0
+
+# Image Processing
+Pillow==10.4.0
+
+# spaCy English Model
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
