@@ -155,13 +155,29 @@ Personalize your advice based on this background."""
     def chat(self, user_message: str) -> str:
         """
         Send a message and get a response.
+        Handles any input format - plain English, special chars, emojis, etc.
 
         Args:
-            user_message: The user's message
+            user_message: The user's message (any format accepted)
 
         Returns:
             Assistant's response string
         """
+        # Normalize input - accept any format
+        if user_message is None:
+            user_message = ""
+
+        # Ensure it's a string
+        if not isinstance(user_message, str):
+            user_message = str(user_message)
+
+        # Clean up whitespace but preserve content
+        user_message = user_message.strip()
+
+        # Handle empty messages
+        if not user_message:
+            return "I didn't receive a message. Please type your question about careers, skills, or job search!"
+
         # Add user message to history
         self.conversation_history.append(Message(role="user", content=user_message))
 
@@ -169,10 +185,18 @@ Personalize your advice based on this background."""
         if self._ollama_available is None:
             self.is_ollama_running()
 
-        if self._ollama_available:
-            response = self._ollama_chat(user_message)
-        else:
-            response = self._fallback_chat(user_message)
+        try:
+            if self._ollama_available:
+                response = self._ollama_chat(user_message)
+            else:
+                response = self._fallback_chat(user_message)
+        except Exception as e:
+            # Graceful error handling
+            response = self._rule_based_response(user_message)
+
+        # Ensure response is valid string
+        if not response or not isinstance(response, str):
+            response = "I'm having trouble generating a response. Please try asking your question differently."
 
         # Add assistant response to history
         self.conversation_history.append(Message(role="assistant", content=response))
@@ -251,23 +275,47 @@ Personalize your advice based on this background."""
     def _rule_based_response(self, user_message: str) -> str:
         """
         Generate a basic response when no AI is available.
+        Handles any input format - plain text, questions, statements, etc.
 
         Args:
-            user_message: The user's message
+            user_message: The user's message (any format)
 
         Returns:
             Rule-based response
         """
-        message_lower = user_message.lower()
+        # Safely convert to lowercase for matching
+        try:
+            message_lower = str(user_message).lower().strip()
+        except Exception:
+            message_lower = ""
 
-        # Greeting
-        if any(word in message_lower for word in ["hello", "hi", "hey", "greetings"]):
+        # Handle very short or unclear messages
+        if len(message_lower) < 3:
+            return ("I'm here to help with your career! Try asking me about:\n\n"
+                    "- Resume tips and improvements\n"
+                    "- Salary negotiation\n"
+                    "- Interview preparation\n"
+                    "- Skill development\n"
+                    "- Career transitions\n\n"
+                    "What would you like to know?")
+
+        # Greeting patterns
+        greetings = ["hello", "hi", "hey", "greetings", "howdy", "sup", "what's up",
+                     "good morning", "good afternoon", "good evening", "hola"]
+        if any(word in message_lower for word in greetings):
             return ("Hello! I'm CareerMind AI, your career counselor. "
                     "I can help with resume tips, career planning, salary advice, and more. "
                     "What would you like to discuss?")
 
+        # Thanks/appreciation
+        thanks = ["thank", "thanks", "thx", "appreciate", "helpful", "great", "awesome", "perfect"]
+        if any(word in message_lower for word in thanks):
+            return ("You're welcome! I'm glad I could help. "
+                    "Is there anything else you'd like to know about your career journey?")
+
         # Resume help
-        if "resume" in message_lower:
+        resume_words = ["resume", "cv", "curriculum", "portfolio"]
+        if any(word in message_lower for word in resume_words):
             return ("Here are key resume tips:\n\n"
                     "1. **Quantify achievements** - Use numbers (e.g., 'Improved performance by 40%')\n"
                     "2. **Use keywords** - Match terms from job descriptions\n"
@@ -275,8 +323,9 @@ Personalize your advice based on this background."""
                     "4. **Lead with impact** - Most impressive points first\n\n"
                     "Would you like me to analyze your resume? Upload it in the Analysis tab.")
 
-        # Salary
-        if "salary" in message_lower or "pay" in message_lower or "compensation" in message_lower:
+        # Salary/compensation
+        salary_words = ["salary", "pay", "compensation", "money", "earning", "income", "wage", "offer"]
+        if any(word in message_lower for word in salary_words):
             return ("For salary negotiations:\n\n"
                     "1. **Research market rates** - Use Levels.fyi, Glassdoor, or LinkedIn\n"
                     "2. **Know your value** - List your unique skills and achievements\n"
@@ -285,7 +334,8 @@ Personalize your advice based on this background."""
                     "Check the Salary tab for a personalized estimate based on your profile.")
 
         # Interview
-        if "interview" in message_lower:
+        interview_words = ["interview", "hiring", "recruiter", "hr", "behavioral", "technical interview"]
+        if any(word in message_lower for word in interview_words):
             return ("Interview preparation tips:\n\n"
                     "1. **Research the company** - Know their products, culture, and recent news\n"
                     "2. **STAR method** - Structure behavioral answers with Situation, Task, Action, Result\n"
@@ -293,8 +343,9 @@ Personalize your advice based on this background."""
                     "4. **Prepare questions** - Show genuine interest in the role\n\n"
                     "What type of interview are you preparing for?")
 
-        # Skills
-        if "skill" in message_lower or "learn" in message_lower:
+        # Skills/learning
+        skill_words = ["skill", "learn", "course", "tutorial", "certif", "training", "study", "education"]
+        if any(word in message_lower for word in skill_words):
             return ("For skill development:\n\n"
                     "1. **Focus on fundamentals** - Strong foundations matter more than tool count\n"
                     "2. **Build projects** - Apply learning to real problems\n"
@@ -302,8 +353,9 @@ Personalize your advice based on this background."""
                     "4. **Depth over breadth** - Better to master 5 skills than know 20 superficially\n\n"
                     "Check the Skill Gap tab to see which skills would benefit you most.")
 
-        # Career change
-        if "career" in message_lower and ("change" in message_lower or "switch" in message_lower):
+        # Career change/transition
+        change_words = ["change", "switch", "transition", "pivot", "move", "new career", "different job"]
+        if any(word in message_lower for word in change_words):
             return ("For career transitions:\n\n"
                     "1. **Identify transferable skills** - Many skills apply across roles\n"
                     "2. **Bridge the gap** - Focus on 2-3 key missing skills\n"
@@ -311,14 +363,56 @@ Personalize your advice based on this background."""
                     "4. **Start small** - Side projects or freelance work can build credibility\n\n"
                     "Check the Roadmap tab for a personalized transition plan.")
 
-        # Default
+        # Job search
+        job_words = ["job", "position", "opening", "apply", "application", "hiring", "opportunity"]
+        if any(word in message_lower for word in job_words):
+            return ("Job search tips:\n\n"
+                    "1. **Tailor each application** - Customize resume for each role\n"
+                    "2. **Use multiple channels** - LinkedIn, company sites, referrals\n"
+                    "3. **Network actively** - 70% of jobs come through connections\n"
+                    "4. **Track applications** - Keep a spreadsheet of where you've applied\n"
+                    "5. **Follow up** - Send thank-you notes and check in after 1-2 weeks\n\n"
+                    "What specific help do you need with your job search?")
+
+        # Promotion/growth
+        growth_words = ["promot", "raise", "advance", "grow", "senior", "lead", "manager"]
+        if any(word in message_lower for word in growth_words):
+            return ("Career advancement tips:\n\n"
+                    "1. **Document achievements** - Keep track of your wins\n"
+                    "2. **Seek visibility** - Take on high-impact projects\n"
+                    "3. **Build relationships** - Network with leaders in your org\n"
+                    "4. **Ask for feedback** - Know what skills to develop\n"
+                    "5. **Be proactive** - Don't wait for opportunities, create them\n\n"
+                    "What level are you trying to reach?")
+
+        # Specific tech roles
+        tech_roles = ["engineer", "developer", "data scientist", "analyst", "devops", "machine learning", "ai"]
+        if any(word in message_lower for word in tech_roles):
+            return ("For tech career advice:\n\n"
+                    "1. **Build a portfolio** - GitHub projects, personal website\n"
+                    "2. **Contribute to open source** - Shows collaboration skills\n"
+                    "3. **Stay updated** - Follow tech blogs, podcasts, communities\n"
+                    "4. **Practice coding** - Regular LeetCode/HackerRank practice\n\n"
+                    "Check the Skill Gap tab to see recommended skills for your target role!")
+
+        # Questions/help
+        help_words = ["help", "how", "what", "why", "when", "where", "can you", "could you", "?"]
+        if any(word in message_lower for word in help_words):
+            return ("I can help you with:\n\n"
+                    "- **Resume Analysis** - Upload your resume to get AI feedback\n"
+                    "- **Skill Gap** - See what skills you need for any tech role\n"
+                    "- **Salary Prediction** - Get market salary estimates\n"
+                    "- **Career Roadmap** - Plan your path to a new role\n\n"
+                    "Just ask your question naturally, and I'll do my best to help!")
+
+        # Default response for any other input
         return ("I'm here to help with your career! I can assist with:\n\n"
-                "- Resume optimization\n"
-                "- Skill gap analysis\n"
-                "- Salary expectations\n"
-                "- Career path planning\n"
-                "- Interview preparation\n\n"
-                "What would you like to explore?")
+                "- Resume optimization and feedback\n"
+                "- Skill gap analysis for any tech role\n"
+                "- Salary expectations and negotiation\n"
+                "- Career path planning and transitions\n"
+                "- Interview preparation tips\n\n"
+                "Feel free to ask me anything about your career journey!")
 
     def stream_chat(self, user_message: str) -> Generator[str, None, None]:
         """

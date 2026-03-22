@@ -487,32 +487,58 @@ def predict_salary_handler(role, experience_str, location, resume_state):
 
 def chat_response(message, history, resume_state):
     """
-    Handle chat messages.
+    Handle chat messages with robust input handling.
+    Accepts any input format - plain text, special characters, emojis, etc.
+    Uses Gradio 6.x message format with role/content dictionaries.
     """
     global chatbot
 
     if chatbot is None:
         chatbot = get_chatbot(fallback_analyzer=phi_analyzer)
 
+    # Sanitize and normalize input - accept any format
+    if message is None:
+        message = ""
+
+    # Convert to string if not already
+    if not isinstance(message, str):
+        message = str(message)
+
+    # Strip whitespace but preserve content
+    message = message.strip()
+
+    # Initialize history if needed - MUST be a list
+    if history is None or not isinstance(history, list):
+        history = []
+
+    # Handle empty messages
+    if not message:
+        return history, ""
+
     # Ensure resume context is set
     if resume_state:
         chatbot.set_resume_context(resume_state)
 
-    # Get response
-    response = chatbot.chat(message)
+    try:
+        # Get response - the chatbot handles all text formats
+        response = chatbot.chat(message)
+    except Exception as e:
+        response = f"I encountered an issue. Please try rephrasing: {str(e)[:50]}"
 
-    # Update history
-    history = history or []
-    history.append((message, response))
+    # Add messages in Gradio 6.x message format
+    # IMPORTANT: Each message MUST be a dict with 'role' and 'content'
+    history.append({"role": "user", "content": message})
+    history.append({"role": "assistant", "content": response})
 
     return history, ""
 
 
 def clear_chat():
-    """Clear chat history."""
+    """Clear chat history and return empty list."""
     global chatbot
     if chatbot:
         chatbot.reset_conversation()
+    # Return empty list for history and empty string for input
     return [], ""
 
 
@@ -828,7 +854,9 @@ def build_app():
 
                 chat_history = gr.Chatbot(
                     label="Conversation",
-                    height=400
+                    height=400,
+                    type="messages",  # Use new Gradio 6.x message format
+                    value=[]  # Initialize with empty list
                 )
 
                 with gr.Row():
