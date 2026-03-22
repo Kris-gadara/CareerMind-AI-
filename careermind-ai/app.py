@@ -855,7 +855,6 @@ def build_app():
                 chat_history = gr.Chatbot(
                     label="Conversation",
                     height=400,
-                    type="messages",  # Use new Gradio 6.x message format
                     value=[]  # Initialize with empty list
                 )
 

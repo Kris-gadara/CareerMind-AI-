@@ -1,0 +1,25 @@
+Could not load ML model: Ran out of input. Using rule-based estimation.
+
+    ===========================================================
+    |                                                         |
+    |              CareerMind AI                              |
+    |        Offline Career Intelligence System               |
+    |                                                         |
+    ===========================================================
+    |                                                         |
+    |  Starting server...                                     |
+    |  Open http://127.0.0.1:7860 in your browser             |
+    |                                                         |
+    |  Click "Initialize AI" to load the AI models            |
+    |                                                         |
+    ===========================================================
+    
+Traceback (most recent call last):
+  File "C:\K\Projects\CareerMIND AI\CareerMind-AI-\careermind-ai\app.py", line 972, in <module>
+    app.launch(
+  File "C:\Users\LENOVO GAMING\AppData\Local\Programs\Python\Python311\Lib\site-packages\gradio\blocks.py", line 2740, in launch
+    ) = http_server.start_server(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO GAMING\AppData\Local\Programs\Python\Python311\Lib\site-packages\gradio\http_server.py", line 182, in start_server
+    raise OSError(
+OSError: Cannot find empty port in range: 7860-7860. You can specify a different port by setting the GRADIO_SERVER_PORT environment variable or passing the `server_port` parameter to `launch()`.

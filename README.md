@@ -51,6 +51,35 @@ CareerMind AI is a comprehensive, production-ready career intelligence system th
 
 ---
 
+## 📸 Live Demo
+
+### Resume Analysis Tab
+
+![Resume Analysis Demo](./Screenshot%202026-03-22%20184841.png)
+_Upload a PDF resume and get instant skill extraction with 27+ skills detected, experience years, education, and contact info._
+
+### Skill Gap Analysis Tab
+
+![Skill Gap Analysis Demo](./Screenshot%202026-03-22%20184856.png)
+_Compare your skills against any tech role - see match score, missing skills, and get personalized learning paths._
+
+### Salary Prediction Tab
+
+![Salary Prediction Demo](./Screenshot%202026-03-22%20184919.png)
+_Get market salary estimates based on role, experience, location, and skills - complete with confidence levels._
+
+### Career Roadmap Tab
+
+![Career Roadmap Demo](./Screenshot%202026-03-22%20184936.png)
+_Discover top career matches and generate step-by-step transition plans with realistic timelines._
+
+### Career Chat Tab
+
+![Career Chat Demo](./Screenshot%202026-03-22%20191314.png)
+_Ask anything in natural language - get personalized career advice powered by AI or rule-based responses._
+
+---
+
 ## 🚀 Quick Start
 
 ### Installation
